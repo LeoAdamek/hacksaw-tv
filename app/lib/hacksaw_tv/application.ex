@@ -12,16 +12,17 @@ defmodule HacksawTv.Application do
     children = [
       # Start the Telemetry supervisor
       HacksawTvWeb.Telemetry,
-
       # Start the PubSub system
       {Phoenix.PubSub, name: HacksawTv.PubSub},
+      HacksawTvWeb.Presence,
       # Start Finch
       {Finch, name: HacksawTv.Finch},
       # Start the Endpoint (http/https)
       HacksawTvWeb.Endpoint,
+      HacksawTv.Storage.Streams,
       # Start a worker by calling: HacksawTv.Worker.start_link(arg)
       # {HacksawTv.Worker, arg}
-      {Cluster.Supervisor, [topologies, [name: HacksawTv.ClusterSupervisor]]}
+      {Cluster.Supervisor, [topologies, [name: HacksawTv.ClusterSupervisor]]},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -9,7 +9,6 @@ defmodule HacksawTv.Release do
     load_app()
   end
 
-  @spec rollback(any, any) :: :ok | {:error, any}
   def rollback() do
     load_app()
   end
