@@ -12,8 +12,7 @@ defmodule HacksawTv.Application do
     children = [
       # Start the Telemetry supervisor
       HacksawTvWeb.Telemetry,
-      # Start the Ecto repository
-      HacksawTv.Repo,
+
       # Start the PubSub system
       {Phoenix.PubSub, name: HacksawTv.PubSub},
       # Start Finch

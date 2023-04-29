@@ -20,6 +20,7 @@ defmodule HacksawTvWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/stream/:channel", StreamController, :show
     live_dashboard "/dashboard", metrics: HacksawTvWeb.Telemetry
   end
 

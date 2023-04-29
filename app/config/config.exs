@@ -7,9 +7,6 @@
 # General application configuration
 import Config
 
-config :hacksaw_tv,
-  ecto_repos: [HacksawTv.Repo]
-
 # Configures the endpoint
 config :hacksaw_tv, HacksawTvWeb.Endpoint,
   url: [host: "localhost"],
