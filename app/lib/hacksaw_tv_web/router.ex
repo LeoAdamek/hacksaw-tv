@@ -1,3 +1,5 @@
+import Phoenix.LiveDashboard.Router
+
 defmodule HacksawTvWeb.Router do
   use HacksawTvWeb, :router
 
@@ -18,6 +20,7 @@ defmodule HacksawTvWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live_dashboard "/dashboard", metrics: HacksawTvWeb.Telemetry
   end
 
   # Other scopes may use custom stacks.
@@ -32,12 +35,10 @@ defmodule HacksawTvWeb.Router do
     # If your application does not have an admins-only section yet,
     # you can use Plug.BasicAuth to set up some basic authentication
     # as long as you are also using SSL (which you should anyway).
-    import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: HacksawTvWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

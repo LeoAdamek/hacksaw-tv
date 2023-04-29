@@ -7,6 +7,8 @@ defmodule HacksawTv.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Start the Telemetry supervisor
       HacksawTvWeb.Telemetry,
@@ -17,9 +19,10 @@ defmodule HacksawTv.Application do
       # Start Finch
       {Finch, name: HacksawTv.Finch},
       # Start the Endpoint (http/https)
-      HacksawTvWeb.Endpoint
+      HacksawTvWeb.Endpoint,
       # Start a worker by calling: HacksawTv.Worker.start_link(arg)
       # {HacksawTv.Worker, arg}
+      {Cluster.Supervisor, [topologies, [name: HacksawTv.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
