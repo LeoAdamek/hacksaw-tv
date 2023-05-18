@@ -19,7 +19,7 @@ defmodule HacksawTv.MixProject do
   def application do
     [
       mod: {HacksawTv.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -35,6 +35,7 @@ defmodule HacksawTv.MixProject do
       {:phoenix, "~> 1.7.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
+      {:ecto_psql_extras, "~> 0.6"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:swoosh, "~> 1.3"},
@@ -43,7 +44,9 @@ defmodule HacksawTv.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:secure_random, "~> 0.5.1"},
+      {:argon2_elixir, "~> 3.0"},
     ]
   end
 

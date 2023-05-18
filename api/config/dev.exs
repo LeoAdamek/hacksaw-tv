@@ -64,3 +64,7 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :argon2_elixir,
+  t_cost: 2,
+  m_cost: 10

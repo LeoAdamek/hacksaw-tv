@@ -7,6 +7,9 @@ defmodule HacksawTvWeb.Router do
 
   scope "/api", HacksawTvWeb do
     pipe_through :api
+
+    post "/account/register", UserController, :register
+    post "/account/login",  UserController, :authenticate
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
@@ -21,7 +24,10 @@ defmodule HacksawTvWeb.Router do
     scope "/dev" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
-      live_dashboard "/dashboard", metrics: HacksawTvWeb.Telemetry
+      live_dashboard "/dashboard",
+        metrics: HacksawTvWeb.Telemetry,
+        ecto_repos: [HacksawTv.Repo]
+
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
